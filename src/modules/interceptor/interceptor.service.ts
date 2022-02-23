@@ -15,11 +15,7 @@ export class InterceptorService {
   ) {}
 
   async findAll(query): Promise<InterceptorsRO> {
-    const qb = await getRepository(InterceptorEntity).createQueryBuilder(
-      'interceptor'
-    );
-    qb.where('1 = 1');
-    const interceptors = await qb.getMany();
+    const interceptors = await this.interceptorRepository.find();
     return new PaginationArray(interceptors);
   }
 
