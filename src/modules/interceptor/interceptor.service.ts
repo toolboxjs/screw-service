@@ -1,7 +1,7 @@
 import { PaginationArray } from '@/utils/pagination-array';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { getRepository, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { CreateInterceptorDto } from './dto/create-interceptor.dto';
 import { UpdateInterceptorDto } from './dto/update-interceptor.dto';
 import { InterceptorEntity } from './interceptor.entity';
