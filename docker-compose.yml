@@ -1,0 +1,12 @@
+version: '0'
+services:
+  screw-service:
+    image: node
+    container_name: node
+    working_dir: /data/screw-service
+    command: bash -c "npm run start:prod"
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - ~/Documents/Projects/custom/vite-quickstart-ts:/data/vite-quickstart-ts
