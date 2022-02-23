@@ -14,10 +14,4 @@ import { InterceptorEntity } from './interceptor.entity';
   providers: [InterceptorService],
   controllers: [InterceptorController]
 })
-export class InterceptorModule implements NestModule {
-  public configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply()
-      .forRoutes({ path: 'interceptors', method: RequestMethod.GET });
-  }
-}
+export class InterceptorModule {}
