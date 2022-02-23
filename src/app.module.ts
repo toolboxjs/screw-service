@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
-import { InteractorModule } from './interactor/interactor.module';
+import { InterceptorModule } from './interceptor/interceptor.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), InteractorModule],
+  imports: [TypeOrmModule.forRoot(), InterceptorModule],
   providers: []
 })
 export class AppModule {

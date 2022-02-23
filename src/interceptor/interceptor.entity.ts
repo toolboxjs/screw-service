@@ -1,7 +1,7 @@
 import { BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('interactor')
-export class InteractorEntity {
+@Entity('interceptor')
+export class InterceptorEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
