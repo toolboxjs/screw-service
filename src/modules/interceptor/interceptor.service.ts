@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { CreateInterceptorDto } from './dto/create-interceptor.dto';
 import { UpdateInterceptorDto } from './dto/update-interceptor.dto';
 import { InterceptorEntity } from './interceptor.entity';
-import { InterceptorsRO } from './interceptor.interface';
+import { InterceptorRO, InterceptorsRO } from './interceptor.interface';
 
 @Injectable()
 export class InterceptorService {
@@ -17,6 +17,10 @@ export class InterceptorService {
   async findAll(query): Promise<InterceptorsRO> {
     const interceptors = await this.interceptorRepository.find();
     return new PaginationArray(interceptors);
+  }
+
+  async findOne(id: number): Promise<InterceptorRO> {
+    return await this.interceptorRepository.findOne({ id });
   }
 
   async create(params: CreateInterceptorDto): Promise<void> {

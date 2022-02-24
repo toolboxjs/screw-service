@@ -23,7 +23,7 @@ export class TransformInterceptor<T>
       map((data) => {
         return {
           data,
-          code: 0
+          statusCode: 0
         };
       })
     );

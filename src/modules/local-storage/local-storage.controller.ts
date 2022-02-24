@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { LocalStoragesRO } from './local-storage.interface';
 import { LocalStorageService } from './local-storage.service';
 import { CreateLocalStorageDto } from './dto/create-local-storage.dto';
@@ -10,6 +10,11 @@ export class LocalStorageController {
   @Get()
   async findAll(@Query() query): Promise<LocalStoragesRO> {
     return this.localStoragesService.findAll(query);
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id) {
+    return this.localStoragesService.findOne(id);
   }
 
   @Post()

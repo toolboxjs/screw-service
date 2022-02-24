@@ -13,13 +13,18 @@ export class InterceptorController {
     return this.interceptorService.findAll(query);
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id) {
+    return this.interceptorService.findOne(id);
+  }
+
   @Post()
   create(@Body() createInterceptorDto: CreateInterceptorDto) {
     return this.interceptorService.create(createInterceptorDto);
   }
 
   @Put(':id')
-  update(@Param() param, @Body() updateInterceptorDto: UpdateInterceptorDto) {
-    return this.interceptorService.update(param.id, updateInterceptorDto);
+  update(@Param('id') id, @Body() updateInterceptorDto: UpdateInterceptorDto) {
+    return this.interceptorService.update(id, updateInterceptorDto);
   }
 }
