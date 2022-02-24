@@ -1,10 +1,11 @@
 import { PaginationArray } from '@/common/utils/pagination-array';
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { LocalStorageEntity } from './local-storage.entity';
 import { LocalStorageRO, LocalStoragesRO } from './local-storage.interface';
 import { CreateLocalStorageDto } from './dto/create-local-storage.dto';
+import { ErrorMessage } from '@/common/enums/error-message.enum';
 
 @Injectable()
 export class LocalStorageService {
@@ -22,9 +23,18 @@ export class LocalStorageService {
     return await this.localStorageRepository.findOne({ id });
   }
 
-  async create(params: CreateLocalStorageDto): Promise<void> {
+  async create({ key }: CreateLocalStorageDto): Promise<void> {
+    const ls = await this.localStorageRepository.findOne({ key });
+
+    if (ls) {
+      throw new HttpException(
+        { message: ErrorMessage.LOCAL_STORAGE_KEY_MUST_BE_UNIQUE },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+
     const localStorage = new LocalStorageEntity();
-    localStorage.key = params.key;
+    localStorage.key = key;
     await this.localStorageRepository.save(localStorage);
     return;
   }
