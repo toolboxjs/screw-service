@@ -14,11 +14,11 @@ export class LocalStorageController {
 
   @Get(':id')
   async findOne(@Param('id') id) {
-    return this.localStoragesService.findOne(id);
+    return await this.localStoragesService.findOne(id);
   }
 
   @Post()
   async create(@Body() createLocalStorageDto: CreateLocalStorageDto) {
-    return this.localStoragesService.create(createLocalStorageDto);
+    return await this.localStoragesService.create(createLocalStorageDto);
   }
 }
