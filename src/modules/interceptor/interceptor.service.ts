@@ -1,4 +1,4 @@
-import { PaginationArray } from '@/utils/pagination-array';
+import { PaginationArray } from '@/common/utils/pagination-array';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';

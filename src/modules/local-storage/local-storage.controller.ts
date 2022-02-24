@@ -1,13 +1,19 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { LocalStoragesRO } from './local-storage.interface';
 import { LocalStorageService } from './local-storage.service';
+import { CreateLocalStorageDto } from './dto/create-local-storage.dto';
 
 @Controller('local-storages')
 export class LocalStorageController {
-  constructor(private readonly localStoragesRO: LocalStorageService) {}
+  constructor(private readonly localStoragesService: LocalStorageService) {}
 
   @Get()
   async findAll(@Query() query): Promise<LocalStoragesRO> {
-    return this.localStoragesRO.findAll(query);
+    return this.localStoragesService.findAll(query);
+  }
+
+  @Post()
+  async create(@Body() createLocalStorageDto: CreateLocalStorageDto) {
+    return this.localStoragesService.create(createLocalStorageDto);
   }
 }
