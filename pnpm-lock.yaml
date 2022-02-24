@@ -21,6 +21,7 @@ specifiers:
   eslint-plugin-prettier: ^4.0.0
   jest: ^27.2.5
   mysql: ^2.18.1
+  nestjs-consul: ^1.4.0
   prettier: ^2.3.2
   reflect-metadata: ^0.1.13
   rimraf: ^3.0.2
@@ -43,6 +44,7 @@ dependencies:
   class-transformer: 0.5.1
   class-validator: 0.13.2
   mysql: 2.18.1
+  nestjs-consul: 1.4.0_c6b5124d9955b7d71360d74672ff304d
   reflect-metadata: 0.1.13
   rimraf: 3.0.2
   rxjs: 7.5.4
@@ -4031,6 +4033,26 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
+  /nestjs-consul/1.4.0_c6b5124d9955b7d71360d74672ff304d:
+    resolution: {integrity: sha512-u7qWoS7BDM5jPjIz1CAC4BQyajEgfwqqbEIz9EueyVOFv7EeCmcC+WbzfTAj8hm3yLtxQLI7TLEPhikUzBaKSw==}
+    peerDependencies:
+      '@nestjs/common': ^8.0.0
+      '@nestjs/platform-express': ^8.0.0
+    dependencies:
+      '@nestjs/common': 8.3.1_41a73a83cecc93a04fa529b9098e66bd
+      '@nestjs/platform-express': 8.3.1_dc024985ab89eb73339eca509fad8031
+      node-cron: 2.0.3
+    dev: false
+
+  /node-cron/2.0.3:
+    resolution: {integrity: sha512-eJI+QitXlwcgiZwNNSRbqsjeZMp5shyajMR81RZCqeW0ZDEj4zU9tpd4nTh/1JsBiKbF8d08FCewiipDmVIYjg==}
+    engines: {node: '>=6.0.0'}
+    requiresBuild: true
+    dependencies:
+      opencollective-postinstall: 2.0.3
+      tz-offset: 0.0.1
+    dev: false
+
   /node-emoji/1.11.0:
     resolution: {integrity: sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==}
     dependencies:
@@ -4105,6 +4127,11 @@ packages:
     dependencies:
       mimic-fn: 2.1.0
     dev: true
+
+  /opencollective-postinstall/2.0.3:
+    resolution: {integrity: sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==}
+    hasBin: true
+    dev: false
 
   /optional/0.1.4:
     resolution: {integrity: sha512-gtvrrCfkE08wKcgXaVwQVgwEQ8vel2dc5DDBn9RLQZ3YtmtkBss6A2HY6BnJH4N/4Ku97Ri/SF8sNWE2225WJw==}
@@ -5255,6 +5282,10 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
+
+  /tz-offset/0.0.1:
+    resolution: {integrity: sha512-kMBmblijHJXyOpKzgDhKx9INYU4u4E1RPMB0HqmKSgWG8vEcf3exEfLh4FFfzd3xdQOw9EuIy/cP0akY6rHopQ==}
+    dev: false
 
   /universalify/0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
