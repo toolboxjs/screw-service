@@ -5,7 +5,7 @@ import {
   RequestMethod
 } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { InterceptorEntity } from '@/common/entities/interceptor.entity';
+import { InterceptorEntity } from '@screw/common/entities/interceptor.entity';
 import { InterceptorService } from './interceptor.service';
 import { InterceptorController } from './interceptor.controller';
 

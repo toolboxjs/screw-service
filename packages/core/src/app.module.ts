@@ -3,8 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConsulModule } from 'nestjs-consul';
 import { IConsulConnection } from 'nestjs-consul/dist/interfaces/consul-connection.interface';
 import { Connection } from 'typeorm';
-import { InterceptorModule } from './modules/interceptor/interceptor.module';
-import { LocalStorageModule } from './modules/local-storage/local-storage.module';
+import { InterceptorModule } from './interceptor/interceptor.module';
+import { LocalStorageModule } from './local-storage/local-storage.module';
 
 @Module({
   imports: [

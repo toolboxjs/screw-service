@@ -1,9 +1,9 @@
-import { ErrorMessage } from '@/common/enums/error-message.enum';
-import { PaginationArray } from '@/common/utils/pagination-array';
+import { ErrorMessage } from '@screw/common/enums/error-message.enum';
+import { PaginationArray } from '@screw/common/utils/pagination-array';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { InterceptorEntity } from '@/common/entities/interceptor.entity';
+import { InterceptorEntity } from 'packages/common/entities/interceptor.entity';
 import { CreateInterceptorDto } from './dto/create-interceptor.dto';
 import { UpdateInterceptorDto } from './dto/update-interceptor.dto';
 import { InterceptorRO, InterceptorsRO } from './interceptor.interface';
