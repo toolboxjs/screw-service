@@ -1,6 +1,5 @@
-import { ErrorMessage } from '@screw/common/enums/error-message.enum';
 import { PaginationArray } from '@screw/common/utils/pagination-array';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { InterceptorEntity } from 'packages/common/entities/interceptor.entity';
@@ -36,27 +35,11 @@ export class InterceptorService {
   async update(id: number, params: UpdateInterceptorDto): Promise<void> {
     const toUpdate = await this.interceptorRepository.findOne({ id });
 
-    if (!toUpdate) {
-      throw new HttpException(
-        { message: ErrorMessage.DOES_NOT_EXIST_RECORD },
-        HttpStatus.BAD_REQUEST
-      );
-    }
+    if (!toUpdate) throw new BadRequestException();
 
     const updated = Object.assign(toUpdate, params);
 
     await this.interceptorRepository.save(updated);
     return;
-  }
-
-  async throwIfNotExists(id: number) {
-    const res = await this.interceptorRepository.findOne({ id });
-
-    if (!res) {
-      throw new HttpException(
-        { message: ErrorMessage.DOES_NOT_EXIST_RECORD },
-        HttpStatus.BAD_REQUEST
-      );
-    }
   }
 }

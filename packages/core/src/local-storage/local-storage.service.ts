@@ -1,5 +1,5 @@
 import { PaginationArray } from '@screw/common/utils/pagination-array';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { LocalStorageEntity } from 'packages/common/entities/local-storage.entity';
@@ -25,9 +25,7 @@ export class LocalStorageService {
   async create({ key }: CreateLocalStorageDto): Promise<void> {
     const ls = await this.localStorageRepository.findOne({ key });
 
-    if (ls) {
-      throw new HttpException({ message: '' }, HttpStatus.BAD_REQUEST);
-    }
+    if (ls) throw new BadRequestException();
 
     const localStorage = new LocalStorageEntity();
     localStorage.key = key;
