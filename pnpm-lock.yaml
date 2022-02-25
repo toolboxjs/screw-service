@@ -1,8 +1,9 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@nestjs/axios': ^0.0.6
   '@nestjs/cli': ^8.0.0
-  '@nestjs/common': ^8.0.0
+  '@nestjs/common': ^8.3.1
   '@nestjs/core': ^8.0.0
   '@nestjs/platform-express': ^8.0.0
   '@nestjs/schematics': ^8.0.0
@@ -37,6 +38,7 @@ specifiers:
   webpack: ^5.69.0
 
 dependencies:
+  '@nestjs/axios': 0.0.6_9a0e39cada075cf8a453083f94ffa5a6
   '@nestjs/common': 8.3.1_41a73a83cecc93a04fa529b9098e66bd
   '@nestjs/core': 8.3.1_3ee156419336b921cef6d2ae294e6e72
   '@nestjs/platform-express': 8.3.1_dc024985ab89eb73339eca509fad8031
@@ -779,6 +781,21 @@ packages:
       '@jridgewell/resolve-uri': 3.0.5
       '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
+
+  /@nestjs/axios/0.0.6_9a0e39cada075cf8a453083f94ffa5a6:
+    resolution: {integrity: sha512-RgtKUziiEPRtWS3KJNDqq0Epw9ffFdIKAtcj6cXnWeJvgHLwnDkw2rUsmHpDYrhszG+8bc4H8sDygRKwNPPAQA==}
+    peerDependencies:
+      '@nestjs/common': ^7.0.0 || ^8.0.0
+      reflect-metadata: ^0.1.12
+      rxjs: ^6.0.0 || ^7.0.0
+    dependencies:
+      '@nestjs/common': 8.3.1_41a73a83cecc93a04fa529b9098e66bd
+      axios: 0.26.0
+      reflect-metadata: 0.1.13
+      rxjs: 7.5.4
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /@nestjs/cli/8.2.1_eslint@8.9.0:
     resolution: {integrity: sha512-GnwpORSIkGl6N6yWPONq1wwZ8+zltr3vF1M/2qzupDnXOAvSSCh1otDQRAmeOf3uIIeCiCsJEEx79kRnT7Zdrw==}
