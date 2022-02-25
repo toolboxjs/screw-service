@@ -1,10 +1,11 @@
+import { ErrorMessage } from '@/common/enums/error-message.enum';
 import { PaginationArray } from '@/common/utils/pagination-array';
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { InterceptorEntity } from '@/common/entities/interceptor.entity';
 import { CreateInterceptorDto } from './dto/create-interceptor.dto';
 import { UpdateInterceptorDto } from './dto/update-interceptor.dto';
-import { InterceptorEntity } from './interceptor.entity';
 import { InterceptorRO, InterceptorsRO } from './interceptor.interface';
 
 @Injectable()
@@ -34,8 +35,28 @@ export class InterceptorService {
 
   async update(id: number, params: UpdateInterceptorDto): Promise<void> {
     const toUpdate = await this.interceptorRepository.findOne({ id });
+
+    if (!toUpdate) {
+      throw new HttpException(
+        { message: ErrorMessage.DOES_NOT_EXIST_RECORD },
+        HttpStatus.BAD_REQUEST
+      );
+    }
+
     const updated = Object.assign(toUpdate, params);
+
     await this.interceptorRepository.save(updated);
     return;
+  }
+
+  async throwIfNotExists(id: number) {
+    const res = await this.interceptorRepository.findOne({ id });
+
+    if (!res) {
+      throw new HttpException(
+        { message: ErrorMessage.DOES_NOT_EXIST_RECORD },
+        HttpStatus.BAD_REQUEST
+      );
+    }
   }
 }

@@ -1,4 +1,11 @@
-import { BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeUpdate,
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
+} from 'typeorm';
 
 @Entity('interceptor')
 export class InterceptorEntity {
@@ -14,14 +21,9 @@ export class InterceptorEntity {
   @Column({ default: '' })
   response_on_rejected: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn()
   created_time: Date;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @UpdateDateColumn()
   updated_time: Date;
-
-  @BeforeUpdate()
-  updateTimestamp() {
-    this.updated_time = new Date();
-  }
 }

@@ -1,5 +1,5 @@
 import { PaginationArray } from '@/common/utils/pagination-array';
-import { InterceptorEntity } from './interceptor.entity';
+import { InterceptorEntity } from '@/common/entities/interceptor.entity';
 
 export interface InterceptorRO extends InterceptorEntity {}
 

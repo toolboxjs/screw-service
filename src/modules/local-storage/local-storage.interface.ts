@@ -1,5 +1,5 @@
 import { PaginationArray } from '@/common/utils/pagination-array';
-import { LocalStorageEntity } from './local-storage.entity';
+import { LocalStorageEntity } from '@/common/entities/local-storage.entity';
 
 export interface LocalStorageRO extends LocalStorageEntity {}
 

@@ -2,7 +2,7 @@ import { PaginationArray } from '@/common/utils/pagination-array';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { LocalStorageEntity } from './local-storage.entity';
+import { LocalStorageEntity } from '@/common/entities/local-storage.entity';
 import { LocalStorageRO, LocalStoragesRO } from './local-storage.interface';
 import { CreateLocalStorageDto } from './dto/create-local-storage.dto';
 import { ErrorMessage } from '@/common/enums/error-message.enum';
