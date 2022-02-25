@@ -2,7 +2,7 @@ import { PaginationArray } from '@screw/common/utils/pagination-array';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { InterceptorEntity } from 'packages/common/entities/interceptor.entity';
+import { InterceptorEntity } from '@screw/common/entities/interceptor.entity';
 import { CreateInterceptorDto } from './dto/create-interceptor.dto';
 import { UpdateInterceptorDto } from './dto/update-interceptor.dto';
 import { InterceptorRO, InterceptorsRO } from './interceptor.interface';
@@ -55,6 +55,7 @@ export class InterceptorService {
   async update(id: number, params: UpdateInterceptorDto): Promise<void> {
     const toUpdate = await this.interceptorRepository.findOne({ id });
 
+    // 抛出id不存在的拦截器
     if (!toUpdate) throw new BadRequestException();
 
     const updated = Object.assign(toUpdate, params);
