@@ -1,0 +1,7 @@
+{
+  "name": "@screw/core",
+  "version": "0.0.1",
+  "dependencies": {
+    "@screw/common": "^0.0.1"
+  }
+}
