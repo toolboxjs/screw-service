@@ -12,9 +12,9 @@ export class AuthService {
     private readonly userService: UserService
   ) {}
 
-  async login(data: LoginDto): Promise<string> {
+  async login(data: LoginDto): Promise<{ access_token: string }> {
     const { id } = await this.validateUser(data.username, data.password);
-    return this.jwtService.sign({ id });
+    return { access_token: this.jwtService.sign({ id }) };
   }
 
   async register(data: RegisterDto): Promise<void> {

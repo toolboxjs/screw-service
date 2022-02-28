@@ -1,4 +1,14 @@
-import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+  UseGuards
+} from '@nestjs/common';
+import { JwtAuthGuard } from '@screw/core/auth/jwt-auth.guard';
 import { InterceptorService } from './interceptor.service';
 import { InterceptorsRO } from './interceptor.interface';
 import { CreateInterceptorDto } from './dto/create-interceptor.dto';
@@ -8,6 +18,7 @@ import { UpdateInterceptorDto } from './dto/update-interceptor.dto';
 export class InterceptorController {
   constructor(private readonly interceptorService: InterceptorService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(@Query() query): Promise<InterceptorsRO> {
     return this.interceptorService.findAll(query);
