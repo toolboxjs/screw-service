@@ -4,6 +4,7 @@
     "declaration": true,
     "removeComments": true,
     "strictPropertyInitialization": false,
-    "sourceMap": true
+    "sourceMap": true,
+    "paths": { "@/*": ["packages/core/src/*"] }
   }
 }

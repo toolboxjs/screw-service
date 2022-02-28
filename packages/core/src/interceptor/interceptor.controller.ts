@@ -1,13 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  Put,
-  Query,
-  UseGuards
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { InterceptorService } from './interceptor.service';
 import { InterceptorsRO } from './interceptor.interface';
 import { CreateInterceptorDto } from './dto/create-interceptor.dto';

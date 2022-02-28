@@ -20,9 +20,4 @@ export class LocalStorageEntity {
 
   @UpdateDateColumn()
   updated_time: Date;
-
-  @BeforeUpdate()
-  updateTimestamp() {
-    this.updated_time = new Date();
-  }
 }
