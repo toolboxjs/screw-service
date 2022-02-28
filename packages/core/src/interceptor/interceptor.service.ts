@@ -1,4 +1,4 @@
-import { PaginationArray } from '@screw/common/utils/pagination-array';
+import { PaginationArray } from '@screw/common/utils/pagination';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
