@@ -12,7 +12,6 @@ import { InterceptorService } from './interceptor.service';
 import { InterceptorsRO } from './interceptor.interface';
 import { CreateInterceptorDto } from './dto/create-interceptor.dto';
 import { UpdateInterceptorDto } from './dto/update-interceptor.dto';
-import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('interceptors')
 export class InterceptorController {
