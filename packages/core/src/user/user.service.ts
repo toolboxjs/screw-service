@@ -11,8 +11,15 @@ export class UserService {
     private readonly userRepository: Repository<UserEntity>
   ) {}
 
-  async findOne(where, options?: FindOneOptions<UserEntity>) {
-    return this.userRepository.findOne(where, options);
+  async findOne(where) {
+    return this.userRepository.findOne(where);
+  }
+
+  async findOneWithPassword(username: string): Promise<UserEntity> {
+    return await this.userRepository.findOne(
+      { username },
+      { select: ['password'] }
+    );
   }
 
   async create(data: CreateUserDto) {

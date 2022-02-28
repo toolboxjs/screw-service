@@ -13,10 +13,7 @@ export class AuthService {
   ) {}
 
   async login(data: LoginDto): Promise<string> {
-    const user = await this.userService.findOne(
-      { username: data.username },
-      { select: ['password'] }
-    );
+    const user = await this.userService.findOneWithPassword(data.username);
     if (!user) throw new UnauthorizedException();
     const validate = await Bcrypt.compare(data.password, user.password);
     if (!validate) throw new UnauthorizedException();
