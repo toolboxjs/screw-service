@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from '@screw/common/entities/user.entity';
-import { Repository } from 'typeorm';
+import { FindOneOptions, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
@@ -11,8 +11,8 @@ export class UserService {
     private readonly userRepository: Repository<UserEntity>
   ) {}
 
-  async findOne(where) {
-    return this.userRepository.findOne(where);
+  async findOne(where, options?: FindOneOptions<UserEntity>) {
+    return this.userRepository.findOne(where, options);
   }
 
   async create(data: CreateUserDto) {
