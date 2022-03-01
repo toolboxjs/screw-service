@@ -6,5 +6,5 @@
   "password": "123456",
   "database": "db_screw",
   "entities": ["dist/**/*.entity{.ts,.js}"],
-  "synchronize": true
+  "synchronize": false
 }
