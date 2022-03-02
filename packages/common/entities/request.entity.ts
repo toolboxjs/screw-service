@@ -12,16 +12,16 @@ export class RequestEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ default: '' })
   name_en: string;
 
-  @Column()
+  @Column({ default: '' })
   name_zh: string;
 
   @Column({ type: 'enum', enum: RequestMethod, default: RequestMethod.GET })
   method: RequestMethod;
 
-  @Column()
+  @Column({ default: '' })
   path: string;
 
   @Column({ type: 'json' })
