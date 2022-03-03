@@ -5,12 +5,14 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateRequestDto } from './dto/create-request.dto';
+import { FilterRequestDto } from './dto/filter-request.dto';
 import { UpdateRequestDto } from './dto/update-request.dto';
-import { RequestsRO } from './request.interface';
+import { RequestRO, RequestsRO } from './request.interface';
 import { RequestService } from './request.service';
 
 @Controller('requests')
@@ -19,13 +21,20 @@ export class RequestController {
   constructor(private readonly requestService: RequestService) {}
 
   @Get()
-  async findAll(): Promise<RequestsRO> {
-    return await this.requestService.findAll();
+  async findAll(
+    @Query() filterRequestDto: FilterRequestDto
+  ): Promise<RequestsRO> {
+    return await this.requestService.findAll(filterRequestDto);
   }
 
   @Post()
   create(@Body() createRequestDto: CreateRequestDto) {
     return this.requestService.create(createRequestDto);
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: number): Promise<RequestRO> {
+    return await this.requestService.findOne(id);
   }
 
   @Put(':id')

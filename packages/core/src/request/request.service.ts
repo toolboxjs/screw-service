@@ -2,8 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RequestEntity } from '@screw/common/entities/request.entity';
 import { PaginationArray } from '@screw/common/utils/pagination';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { CreateRequestDto } from './dto/create-request.dto';
+import { FilterRequestDto } from './dto/filter-request.dto';
 import { UpdateRequestDto } from './dto/update-request.dto';
 
 @Injectable()
@@ -13,9 +14,28 @@ export class RequestService {
     private readonly requestRepository: Repository<RequestEntity>
   ) {}
 
-  async findAll() {
-    const requests = await this.requestRepository.find();
+  async findAll(query: FilterRequestDto) {
+    const qb = await this.requestRepository.createQueryBuilder();
+    qb.where('1=1');
+
+    if (Reflect.has(query, 'name_en')) {
+      qb.andWhere({ name_en: Like(`%${query.name_en}%`) });
+    }
+
+    if (Reflect.has(query, 'method')) {
+      qb.andWhere({ method: query.method });
+    }
+
+    if (Reflect.has(query, 'path')) {
+      qb.andWhere({ path: Like(`%${query.path}%`) });
+    }
+
+    const requests = await qb.getMany();
     return new PaginationArray(requests);
+  }
+
+  async findOne(id: number) {
+    return await this.requestRepository.findOne({ id });
   }
 
   async create(data: CreateRequestDto): Promise<void> {
