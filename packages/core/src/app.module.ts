@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { InterceptorModule } from './interceptor/interceptor.module';
 import { LocalStorageModule } from './local-storage/local-storage.module';
+import { RequestModule } from './request/request.module';
 
 @Module({
   imports: [
@@ -11,7 +12,8 @@ import { LocalStorageModule } from './local-storage/local-storage.module';
     TypeOrmModule.forRoot(),
     AuthModule,
     InterceptorModule,
-    LocalStorageModule
+    LocalStorageModule,
+    RequestModule
   ],
   providers: []
 })

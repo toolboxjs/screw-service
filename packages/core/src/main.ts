@@ -4,11 +4,10 @@ import { TransformInterceptor } from '@screw/common/interceptors/transform.inter
 import { HttpExceptionFilter } from '@screw/common/filters/http-exception.filter';
 import { AppModule } from './app.module';
 
-async function bootstrap() {
+(async () => {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new TransformInterceptor());
   app.useGlobalFilters(new HttpExceptionFilter());
   await app.listen(3000);
-}
-bootstrap();
+})();
